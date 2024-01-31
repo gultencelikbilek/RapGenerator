@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardviewRapText"
+    app:cardElevation="0dp">
+
+    <TextView
+        android:id="@+id/tvRapText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/a_diss_about"/>
+
+</androidx.cardview.widget.CardView>
