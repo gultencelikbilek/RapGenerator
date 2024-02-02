@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onBoardingRapCreatorFragment">
+
+    <fragment
+        android:id="@+id/onBoardingRapCreatorFragment"
+        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapCreatorFragment"
+        android:label="fragment_on_boarding_rap_creator"
+        tools:layout="@layout/fragment_on_boarding_rap_creator" >
+        <action
+            android:id="@+id/action_onBoardingRapCreatorFragment_to_onBoardingRapperSelectFragment"
+            app:destination="@id/onBoardingRapperSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingRapperSelectFragment"
+        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapperSelectFragment"
+        android:label="fragment_on_boarding_rapper_select"
+        tools:layout="@layout/fragment_on_boarding_rapper_select" >
+        <action
+            android:id="@+id/action_onBoardingRapperSelectFragment_to_onboardingCreatorRhythmFragment"
+            app:destination="@id/onboardingCreatorRhythmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingCreatorRhythmFragment"
+        android:name="com.example.rapgenerator.view.fragment.OnboardingCreatorRhythmFragment"
+        android:label="fragment_onboarding_creator_rhythm"
+        tools:layout="@layout/fragment_onboarding_creator_rhythm" >
+        <action
+            android:id="@+id/action_onboardingCreatorRhythmFragment_to_onBoardingRapShareFragment"
+            app:destination="@id/onBoardingRapShareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingRapShareFragment"
+        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapShareFragment"
+        android:label="fragment_on_boarding_rap_share"
+        tools:layout="@layout/fragment_on_boarding_rap_share" >
+        <action
+            android:id="@+id/action_onBoardingRapShareFragment_to_premiumFragment"
+            app:destination="@id/premiumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/premiumFragment"
+        android:name="com.example.rapgenerator.inapp.fragment.PremiumFragment"
+        android:label="fragment_premium"
+        tools:layout="@layout/fragment_premium" >
+        <action
+            android:id="@+id/action_premiumFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.rapgenerator.home.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_promptFragment"
+            app:destination="@id/promptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/promptFragment"
+        android:name="com.example.rapgenerator.prompts.fragment.PromptFragment"
+        android:label="fragment_prompt"
+        tools:layout="@layout/fragment_prompt" >
+        <action
+            android:id="@+id/action_promptFragment_to_generatingLyrcisFragment"
+            app:destination="@id/generatingLyrcisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generatingLyrcisFragment"
+        android:name="com.example.rapgenerator.prompts.fragment.GeneratingLyrcisFragment"
+        android:label="fragment_generating_lyrcis"
+        tools:layout="@layout/fragment_generating_lyrcis" >
+        <argument
+            android:name="chatRequestBody"
+            app:argType="string" />
+    </fragment>
+</navigation>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">RapGenerator</string>
+    <string name="infinite">Infinite Lyric Possibilities \n Await</string>
+    <string name="generate">Generate unique rap verses with \n ease, and let your friends marvel\n at your lyrical creativity.</string>
+    <string name="next">Next</string>
+    <string name="choose_your">Choose Your Dream Rap \n Rapper</string>
+    <string name="select_your">Select your favorite rap artist to \n perform your custom lyrics, \n making your friends envious of \n your star collaboration.</string>
+    <string name="find_your">Find Your Perfect Beat \n Match</string>
+    <string name="explore_div">Explore diverse beats to \n complement your lyrics, producing \n catchy tracks that get your friends \n grooving.</string>
+    <string name="share_your">Share Your Rap Flair, \n Ignite Social Media</string>
+    <string name="showcase_your">Showcase your original rap creations \n on social media, captivating friends \n and followers with your undeniable \n talent.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rap_your">Rap Your Stories &amp; Share</string>
+    <string name="unlimited">Unlimited Songs: Unleash Your Rap Potential</string>
+    <string name="speakar">Enjoy Ad-Free, Uninterrupted Inspiration</string>
+    <string name="inspire">Inspire friends with your RAP songs</string>
+    <string name="weekly">Weekly</string>
+    <string name="money">$40</string>
+    <string name="monthly">Monthly</string>
+    <string name="annual">Annual</string>
+    <string name="contiune">Continue</string>
+    <string name="terms_of_use"><u>Terms of Use</u></string>
+    <string name="restore_purchase"><u>Restore Purchase</u></string>
+    <string name="privacy_policy"><u>Privacy Policy</u></string>
+    <string name="rap_gene">Rap Gene</string>
+    <string name="start_here">Start \n Here</string>
+    <string name="prompt">Prompt</string>
+    <string name="type_your_prompt">Type your prompts</string>
+    <string name="fun">Fun</string>
+    <string name="happy">Happy</string>
+    <string name="love">Love</string>
+    <string name="sad">Sad</string>
+    <string name="sexy">Sexy</string>
+    <string name="a_diss_about">A diss about my \n friend Jamie who \n is spending too \n much time with \n his dog</string>
+    <string name="generate_lyrcs">Generating Lyrics</string>
+</resources>
