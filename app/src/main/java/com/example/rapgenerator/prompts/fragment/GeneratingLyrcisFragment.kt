@@ -11,7 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.databinding.FragmentGeneratingLyrcisBinding
-import com.example.rapgenerator.model.ChatcptRequestBody
+import com.example.rapgenerator.model.ChatGptRequest
+import com.example.rapgenerator.model.Message
 import com.example.rapgenerator.viewmodel.PromptsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class GeneratingLyrcisFragment : Fragment() {
     private var rapText = ""
     val args: GeneratingLyrcisFragmentArgs by navArgs()
     private var rapSongTextMessage: String = ""
+    val messages = mutableListOf<Message>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,16 +46,17 @@ class GeneratingLyrcisFragment : Fragment() {
     private fun getData() {
         rapText = args.chatRequestBody
         binding.tvRapText.text = rapText
-        val chatcptRequestBody = ChatcptRequestBody("gpt-3.5-turbo", rapText, 1, 250)
-        viewmodel.sendTextToChatGPT(chatcptRequestBody)
+        messages.add(Message(role = "user", content = rapText))
+        val chatGptRequest = ChatGptRequest("gpt-3.5-turbo",messages, 1, 250)
+        viewmodel.sendPromptToChatGPT(chatGptRequest)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewmodel.promptSendText.collect { rapChatCptModel ->
-                rapChatCptModel?.choices?.let { choices ->
+            viewmodel.promptSendText.collect {chatGptResponse ->
+                chatGptResponse?.choices?.let { choices ->
                     if (choices.isNotEmpty()) {
                         val firstChoice = choices[0]
                         val message = firstChoice?.text
-                        if (!message.isNullOrEmpty()) {
+                        if (!(message.isNullOrEmpty())) {
                             rapSongTextMessage = message
                             Log.d("rapsongtext", rapSongTextMessage)
                         }

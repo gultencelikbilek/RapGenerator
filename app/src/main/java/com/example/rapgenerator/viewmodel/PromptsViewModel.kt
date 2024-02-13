@@ -3,9 +3,9 @@ package com.example.rapgenerator.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rapgenerator.model.ChatcptRequestBody
-import com.example.rapgenerator.model.RapChatCptModel
-import com.example.rapgenerator.prompts.usecase.SendTextUseCase
+import com.example.rapgenerator.model.ChatGptRequest
+import com.example.rapgenerator.model.ChatGptRapResponse
+import com.example.rapgenerator.prompts.usecase.SendPromptUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,18 +14,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PromptsViewModel @Inject constructor(
-    private val sendTextUseCase: SendTextUseCase
+    private val sendPromptUseCase: SendPromptUseCase
 ) : ViewModel() {
 
-    private val _promptsSendText = MutableStateFlow<RapChatCptModel?>(null)
-    val promptSendText: StateFlow<RapChatCptModel?> = _promptsSendText
+    private val _promptsSendText = MutableStateFlow<ChatGptRapResponse?>(null)
+    val promptSendText: StateFlow<ChatGptRapResponse?> = _promptsSendText
 
-    fun sendTextToChatGPT(text: ChatcptRequestBody) {
+    fun sendPromptToChatGPT(prompt: ChatGptRequest) {
         viewModelScope.launch {
             try {
-                sendTextUseCase.invoke(text).collect { response ->
+                sendPromptUseCase.invoke(prompt).collect { response ->
                     if (response.isSuccessful) {
                         _promptsSendText.value = response.body()
+                        Log.d("onSuccesPromptViewModel:", response.body().toString())
                     } else {
                         Log.d("Error:PromptViewModel", response.errorBody().toString())
                     }

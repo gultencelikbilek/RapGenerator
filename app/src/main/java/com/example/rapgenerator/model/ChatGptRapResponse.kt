@@ -2,7 +2,7 @@ package com.example.rapgenerator.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RapChatCptModel(
+data class ChatGptRapResponse(
     @SerializedName("choices")
     val choices: List<Choice?>?,
     @SerializedName("created")
