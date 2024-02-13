@@ -23,6 +23,8 @@ class GeneratingLyrcisFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewmodel: PromptsViewModel by viewModels()
     private var rapText = ""
+    private var rapcText = ""
+    private var rapTbext = ""
     val args: GeneratingLyrcisFragmentArgs by navArgs()
     private var rapSongTextMessage: String = ""
     val messages = mutableListOf<Message>()
