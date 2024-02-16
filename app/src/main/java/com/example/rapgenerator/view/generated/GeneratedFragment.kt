@@ -1,20 +1,20 @@
-package com.example.rapgenerator.home.fragment
+package com.example.rapgenerator.view.generated
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.rapgenerator.R
-import com.example.rapgenerator.databinding.FragmentHomeBinding
+import androidx.navigation.fragment.navArgs
+import com.example.rapgenerator.databinding.FragmentGeneratedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
-    private var _binding : FragmentHomeBinding?= null
+class GeneratedFragment : Fragment() {
+    private var _binding : FragmentGeneratedBinding ?= null
     private val binding get() = _binding!!
-
+    private var songLyrics : String = ""
+    private val args : GeneratedFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,20 +22,19 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       _binding = FragmentHomeBinding.inflate(inflater,container,false)
+       _binding = FragmentGeneratedBinding.inflate(inflater,container,false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onItemClick()
+
+        getData()
+
     }
 
-    private fun onItemClick() {
-        binding.btnAdd.setOnClickListener{
-            if (findNavController().currentDestination?.id == R.id.homeFragment){
-                findNavController().navigate(R.id.action_homeFragment_to_promptFragment)
-            }
-        }
+    private fun getData() {
+        songLyrics = args.songLyrics
+        binding.tvSongLyricsEdit.text = songLyrics
     }
 
     override fun onDestroy() {

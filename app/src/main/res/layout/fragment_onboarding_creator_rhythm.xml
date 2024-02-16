@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.OnboardingCreatorRhythmFragment">
+    tools:context=".view.onboarding.OnboardingCreatorRhythmFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/onboardingConstraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_494sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/custom_onboarding_button"

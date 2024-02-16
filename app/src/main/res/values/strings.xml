@@ -33,4 +33,10 @@
     <string name="sexy">Sexy</string>
     <string name="a_diss_about">A diss about my \n friend Jamie who \n is spending too \n much time with \n his dog</string>
     <string name="generate_lyrcs">Generating Lyrics</string>
+    <string name="song_title">Song Title</string>
+    <string name="king_of_the_hustle">King of the \n  Hustle</string>
+    <string name="song_lyrcis">Song Lyrics</string>
+    <string name="count_down">12</string>
+    <string name="s_left">s Left</string>
+    <string name="processing">Processing</string>
 </resources>

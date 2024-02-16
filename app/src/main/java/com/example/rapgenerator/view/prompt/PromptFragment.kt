@@ -1,4 +1,4 @@
-package com.example.rapgenerator.prompts.fragment
+package com.example.rapgenerator.view.prompt
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,17 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentPromptBinding
-import com.example.rapgenerator.prompts.adapter.PromptMoodAdapter
-import com.example.rapgenerator.prompts.adapter.RapTextAdapter
-import com.example.rapgenerator.viewmodel.PromptsViewModel
-import com.example.rapgenerator.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +42,8 @@ class PromptFragment : Fragment(), RapTextAdapter.OnItemClickListener {
     private fun onItemClick() {
         val rapText = binding.etTypeYourPrompts.text.toString()
         if (findNavController().currentDestination?.id == R.id.promptFragment) {
-            val action = PromptFragmentDirections.actionPromptFragmentToGeneratingLyrcisFragment(rapText)
+            val action =
+                PromptFragmentDirections.actionPromptFragmentToGeneratingLyrcisFragment(rapText)
             findNavController().navigate(action)
         }
     }
@@ -96,7 +90,8 @@ class PromptFragment : Fragment(), RapTextAdapter.OnItemClickListener {
         binding.btnContiune.setOnClickListener {
             val rapText = binding.etTypeYourPrompts.text.toString()
             if (findNavController().currentDestination?.id == R.id.promptFragment) {
-                val action = PromptFragmentDirections.actionPromptFragmentToGeneratingLyrcisFragment(rapText)
+                val action =
+                    PromptFragmentDirections.actionPromptFragmentToGeneratingLyrcisFragment(rapText)
                 findNavController().navigate(action)
             }
         }

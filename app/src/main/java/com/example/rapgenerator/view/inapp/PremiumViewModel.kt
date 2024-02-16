@@ -1,4 +1,4 @@
-package com.example.rapgenerator.inapp.viewmodel
+package com.example.rapgenerator.view.inapp
 
 import androidx.lifecycle.ViewModel
 

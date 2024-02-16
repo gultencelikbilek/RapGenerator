@@ -1,8 +1,8 @@
-package com.example.rapgenerator.model
+package com.example.rapgenerator.model.chat
 
 import com.google.gson.annotations.SerializedName
 
-data class ChatGptRequest(
+data class ChatGptRequestNew(
     @SerializedName("max_tokens")
     val maxTokens: Int?,
     @SerializedName("model")
@@ -11,5 +11,4 @@ data class ChatGptRequest(
     val prompt: String?,
     @SerializedName("temperature")
     val temperature: Double?
-
 )

@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingRapCreatorFragment">
+    app:startDestination="@id/promptFragment">
 
     <fragment
         android:id="@+id/onBoardingRapCreatorFragment"
-        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapCreatorFragment"
+        android:name="com.example.rapgenerator.view.onboarding.OnBoardingRapCreatorFragment"
         android:label="fragment_on_boarding_rap_creator"
         tools:layout="@layout/fragment_on_boarding_rap_creator" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingRapperSelectFragment"
-        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapperSelectFragment"
+        android:name="com.example.rapgenerator.view.onboarding.OnBoardingRapperSelectFragment"
         android:label="fragment_on_boarding_rapper_select"
         tools:layout="@layout/fragment_on_boarding_rapper_select" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingCreatorRhythmFragment"
-        android:name="com.example.rapgenerator.view.fragment.OnboardingCreatorRhythmFragment"
+        android:name="com.example.rapgenerator.view.onboarding.OnboardingCreatorRhythmFragment"
         android:label="fragment_onboarding_creator_rhythm"
         tools:layout="@layout/fragment_onboarding_creator_rhythm" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingRapShareFragment"
-        android:name="com.example.rapgenerator.view.fragment.OnBoardingRapShareFragment"
+        android:name="com.example.rapgenerator.view.onboarding.OnBoardingRapShareFragment"
         android:label="fragment_on_boarding_rap_share"
         tools:layout="@layout/fragment_on_boarding_rap_share" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/premiumFragment"
-        android:name="com.example.rapgenerator.inapp.fragment.PremiumFragment"
+        android:name="com.example.rapgenerator.view.inapp.PremiumFragment"
         android:label="fragment_premium"
         tools:layout="@layout/fragment_premium" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.rapgenerator.home.fragment.HomeFragment"
+        android:name="com.example.rapgenerator.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/promptFragment"
-        android:name="com.example.rapgenerator.prompts.fragment.PromptFragment"
+        android:name="com.example.rapgenerator.view.prompt.PromptFragment"
         android:label="fragment_prompt"
         tools:layout="@layout/fragment_prompt" >
         <action
@@ -70,11 +70,23 @@
     </fragment>
     <fragment
         android:id="@+id/generatingLyrcisFragment"
-        android:name="com.example.rapgenerator.prompts.fragment.GeneratingLyrcisFragment"
+        android:name="com.example.rapgenerator.view.generating_lyrics.GeneratingLyrcisFragment"
         android:label="fragment_generating_lyrcis"
         tools:layout="@layout/fragment_generating_lyrcis" >
         <argument
             android:name="chatRequestBody"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_generatingLyrcisFragment_to_generatedFragment"
+            app:destination="@id/generatedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generatedFragment"
+        android:name="com.example.rapgenerator.view.generated.GeneratedFragment"
+        android:label="fragment_generated"
+        tools:layout="@layout/fragment_generated" >
+        <argument
+            android:name="song_lyrics"
             app:argType="string" />
     </fragment>
 </navigation>

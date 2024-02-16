@@ -1,4 +1,4 @@
-package com.example.rapgenerator.prompts.adapter
+package com.example.rapgenerator.view.prompt
 
 import android.content.Context
 import android.view.LayoutInflater

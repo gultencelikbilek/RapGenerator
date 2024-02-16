@@ -10,5 +10,5 @@ data class Choice(
     @SerializedName("logprobs")
     val logprobs: Any?,
     //@SerializedName("message")
-    val text: String?
+    var text: String?,
 )

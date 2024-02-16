@@ -1,4 +1,4 @@
-package com.example.rapgenerator.view.fragment
+package com.example.rapgenerator.view.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

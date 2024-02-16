@@ -1,4 +1,4 @@
-package com.example.rapgenerator.view.fragment
+package com.example.rapgenerator.view.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentOnBoardingRapShareBinding
+import com.example.rapgenerator.databinding.FragmentOnboardingCreatorRhythmBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OnBoardingRapShareFragment : Fragment() {
-    private var _binding: FragmentOnBoardingRapShareBinding? = null
+class OnboardingCreatorRhythmFragment : Fragment() {
+    private var _binding: FragmentOnboardingCreatorRhythmBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,7 @@ class OnBoardingRapShareFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOnBoardingRapShareBinding.inflate(inflater,container,false)
+       _binding =FragmentOnboardingCreatorRhythmBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -33,12 +34,14 @@ class OnBoardingRapShareFragment : Fragment() {
 
     private fun onItemClick() {
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardingRapShareFragment_to_premiumFragment)
+            findNavController().navigate(R.id.action_onboardingCreatorRhythmFragment_to_onBoardingRapShareFragment)
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 }
