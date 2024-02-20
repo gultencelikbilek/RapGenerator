@@ -12,27 +12,29 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private var _binding : FragmentHomeBinding?= null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onItemClick()
     }
 
     private fun onItemClick() {
-        binding.btnAdd.setOnClickListener{
-            if (findNavController().currentDestination?.id == R.id.homeFragment){
+        binding.btnAdd.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.homeFragment) {
                 findNavController().navigate(R.id.action_homeFragment_to_promptFragment)
             }
         }

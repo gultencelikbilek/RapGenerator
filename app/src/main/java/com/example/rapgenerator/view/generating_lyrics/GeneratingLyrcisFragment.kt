@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.databinding.FragmentGeneratingLyrcisBinding
-import com.example.rapgenerator.model.Message
-import com.example.rapgenerator.model.chat.ChatGptRequestNew
+import com.example.rapgenerator.data.chatgpt.Message
+import com.example.rapgenerator.data.chatgpt.ChatGptRequestNew
 import com.example.rapgenerator.view.prompt.PromptsViewModel
-import com.example.rapgenerator.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

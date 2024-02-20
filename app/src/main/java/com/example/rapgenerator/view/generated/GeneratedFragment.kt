@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentGeneratedBinding
-import com.example.rapgenerator.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,17 +32,23 @@ class GeneratedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getData()
-
+        onItemClick()
     }
 
+    private fun onItemClick() {
+        val rapSongLyrics = binding.tvSongLyricsEdit.text.toString()
+        binding.imgEdit.setOnClickListener {
+            val action = GeneratedFragmentDirections.actionGeneratedFragmentToEditLyricsFragment(rapSongLyrics)
+            findNavController().navigate(action)
+        }
+
+        binding.btnContiune.setOnClickListener {
+            findNavController().navigate(R.id.action_generatedFragment_to_selectBeatFragment)
+        }
+    }
     private fun getData() {
         songLyrics = args.songLyrics
         binding.tvSongLyricsEdit.text = songLyrics
-        val rapSongLyrics = binding.tvSongLyricsEdit.text.trim()
-        binding.btnNext.setOnClickListener {
-            val action = GeneratedFragmentDirections.actionGeneratedFragmentToEditLyricsFragment(rapSongLyrics.toString())
-            findNavController().navigate(action)
-        }
     }
 
     override fun onDestroy() {

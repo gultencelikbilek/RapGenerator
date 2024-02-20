@@ -2,7 +2,7 @@ package com.example.rapgenerator.di
 
 import com.example.rapgenerator.api.ApiService
 import com.example.rapgenerator.di.repository.PromptsRepositoryImpl
-import com.example.rapgenerator.repository.IPromptRepository
+import com.example.rapgenerator.data.repository.IPromptRepository
 import com.example.rapgenerator.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -26,6 +26,16 @@ object AppModule {
             .create(ApiService::class.java)
     }
 
+
+    @Singleton
+    @Provides
+    fun providesBeatRetrofit() : ApiService{
+        return Retrofit.Builder()
+            .baseUrl(Constants.BEAT_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ApiService::class.java)
+    }
 
     @Provides
     @Singleton

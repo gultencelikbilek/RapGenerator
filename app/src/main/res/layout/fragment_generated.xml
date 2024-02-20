@@ -121,14 +121,14 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNext"
+        android:id="@+id/btnContiune"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/custom_onboarding_button"
-        android:text="@string/next"
+        android:text="@string/contiune"
         android:layout_marginBottom="@dimen/_4sdp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
