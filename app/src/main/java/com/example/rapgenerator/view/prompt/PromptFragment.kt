@@ -1,6 +1,5 @@
 package com.example.rapgenerator.view.prompt
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,19 +32,6 @@ class PromptFragment : Fragment(), RapTextAdapter.OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRvMoodAndRapText()
-        //onItemClick()
-
-
-    }
-
-    @SuppressLint("SuspiciousIndentation")
-    private fun onItemClick() {
-        val rapText = binding.etTypeYourPrompts.text.toString()
-        if (findNavController().currentDestination?.id == R.id.promptFragment) {
-            val action =
-                PromptFragmentDirections.actionPromptFragmentToGeneratingLyrcisFragment(rapText)
-            findNavController().navigate(action)
-        }
     }
 
     private fun setUpRvMoodAndRapText() {
@@ -68,6 +54,7 @@ class PromptFragment : Fragment(), RapTextAdapter.OnItemClickListener {
             getString(R.string.a_diss_about),
             getString(R.string.a_diss_about)
         )
+
         val rapTextAdapter = RapTextAdapter(rapTextList, this)
         binding.recyclerviewRapText.apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL)
@@ -76,17 +63,14 @@ class PromptFragment : Fragment(), RapTextAdapter.OnItemClickListener {
         }
     }
     override fun onItemClick(rapText: String) {
-        val currentText = binding.etTypeYourPrompts.text.toString().trim()
-        if (currentText.endsWith("\n")) {
-            binding.etTypeYourPrompts.append(rapText)
-        } else {
-            binding.etTypeYourPrompts.append(" $rapText")
-        }
+        binding.etTypeYourPrompts.setText(rapText)
+
         if (!binding.etTypeYourPrompts.text.isNullOrBlank()) binding.btnContiune.background =
             ContextCompat.getDrawable(
                 requireContext(),
                 R.drawable.button_contiune_background_selected
             )
+
         binding.btnContiune.setOnClickListener {
             val rapText = binding.etTypeYourPrompts.text.toString()
             if (findNavController().currentDestination?.id == R.id.promptFragment) {

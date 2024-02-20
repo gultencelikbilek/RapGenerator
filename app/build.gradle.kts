@@ -9,6 +9,9 @@ plugins {
 android {
     namespace = "com.example.rapgenerator"
     compileSdk = 34
+    buildFeatures{
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.example.rapgenerator"
@@ -27,9 +30,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        buildFeatures{
-            viewBinding = true
         }
 
     }

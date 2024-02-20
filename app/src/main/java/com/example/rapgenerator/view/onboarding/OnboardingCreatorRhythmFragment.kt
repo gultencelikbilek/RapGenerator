@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.rapgenerator.R
-import com.example.rapgenerator.databinding.FragmentOnBoardingRapShareBinding
 import com.example.rapgenerator.databinding.FragmentOnboardingCreatorRhythmBinding
 import dagger.hilt.android.AndroidEntryPoint
 

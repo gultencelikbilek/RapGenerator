@@ -21,7 +21,7 @@ class RapTextAdapter(private val rapTextList : List<String>,private val onItemCl
     override fun onBindViewHolder(holder: RapTextViewHolder, position: Int) {
         val currentRapText = rapTextList[position]
         holder.binding.apply {
-            tvRapText.text = currentRapText
+            tvRapText.text = currentRapText.trim()
             root.setOnClickListener {
                 onItemClickListener.onItemClick(currentRapText)
             }

@@ -36,6 +36,10 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_promptFragment)
             }
         }
+
+        binding.imgSetting.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
+        }
     }
 
     override fun onDestroy() {

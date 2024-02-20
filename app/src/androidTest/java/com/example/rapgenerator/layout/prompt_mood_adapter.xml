@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:background="@drawable/custom_mood_button">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnMood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fun"
+        android:textSize="@dimen/_10ssp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:background="@drawable/custom_recyclerview_mood_background"
+        android:textColor="@color/white">
+    </androidx.appcompat.widget.AppCompatButton>
+</androidx.cardview.widget.CardView>

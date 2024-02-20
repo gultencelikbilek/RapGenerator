@@ -8,12 +8,12 @@ import javax.inject.Inject
 @HiltViewModel
 class SharedViewModel  @Inject constructor():ViewModel(){
 
-    private var _chatcptRequestBody =MutableLiveData<String>()
-    var chatcptRequestBody = _chatcptRequestBody
+    private var _RapEditLyrics =MutableLiveData<String>()
+    var rapEditLyrics = _RapEditLyrics
 
 
-    fun chatRequestBody(chatcptRequestBody: String) {
-        _chatcptRequestBody.value = chatcptRequestBody
+     fun rapEditLyrics(rapEditLyrics: String) {
+        _RapEditLyrics.value = rapEditLyrics
     }
 
 }

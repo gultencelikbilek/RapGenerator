@@ -8,20 +8,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.databinding.FragmentGeneratingLyrcisBinding
-import com.example.rapgenerator.model.ChatGptRequest
 import com.example.rapgenerator.model.Message
 import com.example.rapgenerator.model.chat.ChatGptRequestNew
 import com.example.rapgenerator.view.prompt.PromptsViewModel
+import com.example.rapgenerator.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GeneratingLyrcisFragment : Fragment() {
     private var _binding: FragmentGeneratingLyrcisBinding? = null
+
     private val binding get() = _binding!!
     private val viewmodel: PromptsViewModel by viewModels()
     private var rapText = ""
@@ -49,7 +50,7 @@ class GeneratingLyrcisFragment : Fragment() {
     }
 
     private fun countDown() {
-        val initialCountDown = 20 // Başlangıç sayısı
+        val initialCountDown =  8// Başlangıç sayısı
         val countDownTimer = object :
             CountDownTimer((initialCountDown + 1) * 1000L, 1000L) { // Geri sayım başlangıç süresi
             override fun onTick(millisUntilFinished: Long) {
@@ -73,7 +74,7 @@ class GeneratingLyrcisFragment : Fragment() {
 
     private fun getData() {
         rapText = args.chatRequestBody
-        binding.tvRapText.text = rapText
+        binding.tvRapText.text = rapText.trim()
         messages.add(Message(role = "user", content = rapText))
         val chatGptRequestNew = ChatGptRequestNew(250,"gpt-3.5-turbo-instruct",rapText,0.7)
         viewmodel.sendPromptToChatGPT(chatGptRequestNew)

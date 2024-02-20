@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvRapGene"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_90sdp"
@@ -34,9 +33,9 @@
             android:id="@+id/imgSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_70sdp"
-            android:layout_marginTop="@dimen/_14sdp"
-            android:src="@drawable/baseline_settings_24"
+            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:src="@drawable/btn_settings_small"
             tools:layout_editor_absoluteX="323dp" />
     </LinearLayout>
 

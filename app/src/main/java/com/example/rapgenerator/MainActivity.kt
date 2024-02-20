@@ -1,7 +1,7 @@
 package com.example.rapgenerator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.rapgenerator.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

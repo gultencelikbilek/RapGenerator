@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentOnBoardingRapCreatorBinding
-import com.example.rapgenerator.databinding.FragmentOnBoardingRapShareBinding
-import com.example.rapgenerator.databinding.FragmentOnBoardingRapperSelectBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

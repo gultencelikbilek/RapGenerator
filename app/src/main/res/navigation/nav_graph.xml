@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/promptFragment">
+    app:startDestination="@id/onBoardingRapCreatorFragment">
 
     <fragment
         android:id="@+id/onBoardingRapCreatorFragment"
@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_homeFragment_to_promptFragment"
             app:destination="@id/promptFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/promptFragment"
@@ -88,5 +91,26 @@
         <argument
             android:name="song_lyrics"
             app:argType="string" />
+        <action
+            android:id="@+id/action_generatedFragment_to_editLyricsFragment"
+            app:destination="@id/editLyricsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editLyricsFragment"
+        android:name="com.example.rapgenerator.view.edit_lyrics.EditLyricsFragment"
+        android:label="EditLyricsFragment"
+        tools:layout="@layout/fragment_edit_lyrics">
+        <argument
+            android:name="rap_edit_lyrics"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.rapgenerator.view.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

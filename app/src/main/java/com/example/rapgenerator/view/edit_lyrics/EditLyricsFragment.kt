@@ -1,19 +1,21 @@
-package com.example.rapgenerator.view.onboarding
+package com.example.rapgenerator.view.edit_lyrics
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.R
-import com.example.rapgenerator.databinding.FragmentOnBoardingRapperSelectBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.rapgenerator.databinding.FragmentEditLyricsBinding
+import com.example.rapgenerator.viewmodel.SharedViewModel
 
-@AndroidEntryPoint
-class OnBoardingRapperSelectFragment : Fragment() {
-    private var _binding: FragmentOnBoardingRapperSelectBinding? = null
+class EditLyricsFragment : Fragment() {
+    private var _binding : FragmentEditLyricsBinding ?= null
     private val binding get() = _binding!!
+    private val args : EditLyricsFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -21,19 +23,14 @@ class OnBoardingRapperSelectFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentOnBoardingRapperSelectBinding.inflate(inflater,container,false)
+    ): View? {
+        _binding = FragmentEditLyricsBinding.inflate(inflater,container,false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onItemClick()
-    }
-
-    private fun onItemClick() {
-        binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardingRapperSelectFragment_to_onboardingCreatorRhythmFragment)
-        }
+        binding.etRapLyrics.setText(args.rapEditLyrics)
     }
 
     override fun onDestroy() {

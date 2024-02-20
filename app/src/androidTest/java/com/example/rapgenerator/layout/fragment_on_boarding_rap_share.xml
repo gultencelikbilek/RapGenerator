@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.onboarding.OnboardingCreatorRhythmFragment">
+    tools:context=".view.onboarding.OnBoardingRapShareFragment">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/onboardingConstraint"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_494sdp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <ImageView
-            android:id="@+id/imgCreatorRythm"
+            android:id="@+id/imgOnboardingRapShare"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_350sdp"
-            android:src="@drawable/onboardingraprythemsmall"
+            android:src="@drawable/onboardingrapsharesmall"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvFindYour"
+            android:id="@+id/tvShareYour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/find_your"
+            android:text="@string/share_your"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_16ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgCreatorRythm" />
+            app:layout_constraintTop_toBottomOf="@+id/imgOnboardingRapShare" />
 
         <TextView
-            android:id="@+id/tvExploreDiv"
+            android:id="@+id/tvShowcase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="@string/explore_div"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/showcase_your"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFindYour" />
+            app:layout_constraintTop_toBottomOf="@+id/tvShareYour" />
 
         <ImageView
-            android:id="@+id/imgOnboardingLine"
+            android:id="@+id/onBoardingLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:src="@drawable/onboarding3_line_small"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/onboarding4_line_small"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvExploreDiv" />
+            app:layout_constraintTop_toBottomOf="@+id/tvShowcase" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/custom_onboarding_button"
         android:text="@string/next"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboardingConstraint" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboardingConstraint"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
