@@ -19,5 +19,5 @@ interface ApiService {
 
     @GET(Constants.BEAT_END_POINT)
     @Headers("Authorization: Basic ${Constants.BEAT_API_KEY}")
-    fun getBeat() : Response<BackingTrack>
+    fun getBeat() : Call<BeatResponse>
 }

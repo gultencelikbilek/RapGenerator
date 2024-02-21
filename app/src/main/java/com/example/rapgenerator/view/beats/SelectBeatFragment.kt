@@ -1,5 +1,6 @@
 package com.example.rapgenerator.view.beats
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,11 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentSelectBeatBinding
 
-class SelectBeatFragment : Fragment() {
+class SelectBeatFragment : Fragment() ,SelectBeatAdapter.OnItemClickListener{
     private var _binding : FragmentSelectBeatBinding ?= null
     private val binding get() = _binding!!
     private val selectBeatViewModel : SelectBeatViewModel by viewModels()
-    private var selectBeatAdapter = SelectBeatAdapter()
+    private var selectBeatAdapter = SelectBeatAdapter(this)
+    var mediaPlayer = MediaPlayer()
+    private var isPlaying = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,29 +33,35 @@ class SelectBeatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        selectBeatViewModel.getBeat()
         setUpRv()
         getDataSelectBeat()
     }
 
     private fun getDataSelectBeat() {
         selectBeatViewModel.selectBeat.observe(viewLifecycleOwner) {
-            it?.let { // Null kontrolü
-                selectBeatAdapter.differ.submitList(it)
-                Log.d("select",selectBeatAdapter.differ.submitList(it).toString())
-            }
+          selectBeatAdapter.differ.submitList(it)
         }
     }
     private fun setUpRv() {
-        selectBeatAdapter = SelectBeatAdapter()
+        selectBeatAdapter = SelectBeatAdapter(this)
         binding.rvSelectBeat.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = selectBeatAdapter
             setHasFixedSize(true)
         }
     }
+    override fun onItemClick(vaw_audio : String) {
+        binding.apply {
 
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
+
 }

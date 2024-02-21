@@ -17,7 +17,7 @@ class PromptsRepositoryImpl @Inject constructor(private val apiService: ApiServi
         return apiService.sendPrompt(prompt)
     }
 
-    override fun getBeat(): Response<BackingTrack>{
+    override fun getBeat(): Call<BeatResponse>{
         return apiService.getBeat()
     }
 }
