@@ -1,5 +1,6 @@
 package com.example.rapgenerator.view.beats
 
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentSelectBeatBinding
+import java.io.IOException
 
-class SelectBeatFragment : Fragment() ,SelectBeatAdapter.OnItemClickListener{
+class SelectBeatFragment : Fragment() ,SelectBeatAdapter.BeatItemClickedListener{
     private var _binding : FragmentSelectBeatBinding ?= null
     private val binding get() = _binding!!
     private val selectBeatViewModel : SelectBeatViewModel by viewModels()
     private var selectBeatAdapter = SelectBeatAdapter(this)
     var mediaPlayer = MediaPlayer()
-    private var isPlaying = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -53,15 +54,38 @@ class SelectBeatFragment : Fragment() ,SelectBeatAdapter.OnItemClickListener{
             setHasFixedSize(true)
         }
     }
-    override fun onItemClick(vaw_audio : String) {
-        binding.apply {
-
+    override fun beatItemClick(uuid: String, isPLaying: Boolean) {
+        selectBeatViewModel.getBeatUrl(uuid)
+        selectBeatViewModel.beatUrl.observe(viewLifecycleOwner){
+            val url = it.url
+            playAudio(url!!)
         }
     }
+
+    fun playAudio(url: String) {
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer()
+            mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        } else {
+            mediaPlayer!!.reset()
+        }
+        try {
+            mediaPlayer!!.setDataSource(url)
+            mediaPlayer!!.prepare()
+            mediaPlayer!!.start()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun pauseAudio() {
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
+            mediaPlayer!!.pause()
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-
 }

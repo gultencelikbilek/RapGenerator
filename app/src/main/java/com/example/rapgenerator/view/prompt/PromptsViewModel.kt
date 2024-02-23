@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rapgenerator.di.AppModule
-import com.example.rapgenerator.data.chatgpt.ChatGptRapResponse
-import com.example.rapgenerator.data.chatgpt.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRapResponse
+import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRequestNew
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

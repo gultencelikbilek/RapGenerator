@@ -12,8 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rapgenerator.databinding.FragmentGeneratingLyrcisBinding
-import com.example.rapgenerator.data.chatgpt.Message
-import com.example.rapgenerator.data.chatgpt.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.chatgpt.chat.Message
+import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRequestNew
 import com.example.rapgenerator.view.prompt.PromptsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

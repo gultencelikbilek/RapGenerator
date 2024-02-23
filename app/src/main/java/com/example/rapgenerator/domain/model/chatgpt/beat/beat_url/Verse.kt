@@ -1,0 +1,12 @@
+package com.example.rapgenerator.domain.model.chatgpt.beat.beat_url
+
+import com.google.gson.annotations.SerializedName
+
+data class Verse(
+    @SerializedName("label")
+    val label: String?,
+    @SerializedName("length_in_measures")
+    val lengthİnMeasures: Int?,
+    @SerializedName("start")
+    val start: Double?
+)

@@ -1,4 +1,4 @@
-package com.example.rapgenerator.data.chatgpt
+package com.example.rapgenerator.domain.model.chatgpt.chat
 
 import com.google.gson.annotations.SerializedName
 
