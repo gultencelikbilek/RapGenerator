@@ -1,4 +1,4 @@
-package com.example.rapgenerator.domain.model.chatgpt.beat.beat_url
+package com.example.rapgenerator.domain.model.beat.beat_url
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.example.rapgenerator.domain.model.chatgpt.beat
+package com.example.rapgenerator.domain.model.beat
 
 data class Verse(
     val label: String,

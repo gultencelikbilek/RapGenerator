@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rapgenerator.domain.model.chatgpt.beat.BeatResponse
+import com.example.rapgenerator.domain.model.beat.BackingTrack
+import com.example.rapgenerator.domain.model.beat.BeatResponse
 import com.example.rapgenerator.di.AppModule
-import com.example.rapgenerator.domain.model.chatgpt.beat.beat_url.BeatUrlResponse
+import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -18,11 +19,11 @@ import javax.inject.Inject
 @HiltViewModel
 class SelectBeatViewModel @Inject constructor(): ViewModel() {
 
-    private val _selectBeat = MutableLiveData<List<com.example.rapgenerator.domain.model.chatgpt.beat.BackingTrack>>() // Değişiklik burada
-    val selectBeat: LiveData<List<com.example.rapgenerator.domain.model.chatgpt.beat.BackingTrack>> = _selectBeat // Değişiklik burada
+    private val _selectBeat = MutableLiveData<List<BackingTrack>>() // Değişiklik burada
+    val selectBeat: LiveData<List<BackingTrack>> = _selectBeat // Değişiklik burada
 
-    private val _beatUrl = MutableLiveData<com.example.rapgenerator.domain.model.chatgpt.beat.beat_url.BackingTrack>()
-    val beatUrl : LiveData<com.example.rapgenerator.domain.model.chatgpt.beat.beat_url.BackingTrack> = _beatUrl
+    private val _beatUrl = MutableLiveData<com.example.rapgenerator.domain.model.beat.beat_url.BackingTrack>()
+    val beatUrl : LiveData<com.example.rapgenerator.domain.model.beat.beat_url.BackingTrack> = _beatUrl
 
     fun getBeat() = viewModelScope.launch {
         val responseBeat = AppModule.providesBeatRetrofit().getBeat()

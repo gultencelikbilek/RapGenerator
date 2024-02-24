@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rapgenerator.R
-import com.example.rapgenerator.domain.model.chatgpt.beat.BackingTrack
+import com.example.rapgenerator.domain.model.beat.BackingTrack
 import com.example.rapgenerator.databinding.SelectBeatAdapterBinding
 
 class SelectBeatAdapter(private val beatItemClickedListener: BeatItemClickedListener) :

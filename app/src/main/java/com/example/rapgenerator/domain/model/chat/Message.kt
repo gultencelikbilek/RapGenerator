@@ -1,4 +1,4 @@
-package com.example.rapgenerator.domain.model.chatgpt.chat
+package com.example.rapgenerator.domain.model.chat
 
 data class Message(
     val content: String,

@@ -10,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentSelectBeatBinding
 import java.io.IOException
 
-class SelectBeatFragment : Fragment() ,SelectBeatAdapter.BeatItemClickedListener{
-    private var _binding : FragmentSelectBeatBinding ?= null
+class SelectBeatFragment : Fragment(), SelectBeatAdapter.BeatItemClickedListener {
+    private var _binding: FragmentSelectBeatBinding? = null
     private val binding get() = _binding!!
-    private val selectBeatViewModel : SelectBeatViewModel by viewModels()
+    private val selectBeatViewModel: SelectBeatViewModel by viewModels()
     private var selectBeatAdapter = SelectBeatAdapter(this)
     var mediaPlayer = MediaPlayer()
 
@@ -28,7 +29,7 @@ class SelectBeatFragment : Fragment() ,SelectBeatAdapter.BeatItemClickedListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSelectBeatBinding.inflate(inflater,container,false)
+        _binding = FragmentSelectBeatBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,9 +44,10 @@ class SelectBeatFragment : Fragment() ,SelectBeatAdapter.BeatItemClickedListener
 
     private fun getDataSelectBeat() {
         selectBeatViewModel.selectBeat.observe(viewLifecycleOwner) {
-          selectBeatAdapter.differ.submitList(it)
+            selectBeatAdapter.differ.submitList(it)
         }
     }
+
     private fun setUpRv() {
         selectBeatAdapter = SelectBeatAdapter(this)
         binding.rvSelectBeat.apply {
@@ -54,11 +56,20 @@ class SelectBeatFragment : Fragment() ,SelectBeatAdapter.BeatItemClickedListener
             setHasFixedSize(true)
         }
     }
+
     override fun beatItemClick(uuid: String, isPLaying: Boolean) {
+        binding.btnContiune.setBackgroundResource(R.drawable.button_contiune_background_selected)
         selectBeatViewModel.getBeatUrl(uuid)
-        selectBeatViewModel.beatUrl.observe(viewLifecycleOwner){
+        selectBeatViewModel.beatUrl.observe(viewLifecycleOwner) {
             val url = it.url
-            playAudio(url!!)
+
+            if (isPLaying) {
+                Log.d("true", "burda")
+                pauseAudio()
+            } else {
+                Log.d("false", "burda")
+                playAudio(url!!)
+            }
         }
     }
 

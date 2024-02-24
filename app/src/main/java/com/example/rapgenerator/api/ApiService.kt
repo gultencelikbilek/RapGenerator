@@ -1,9 +1,10 @@
 package com.example.rapgenerator.api
 
-import com.example.rapgenerator.domain.model.chatgpt.beat.BeatResponse
-import com.example.rapgenerator.domain.model.chatgpt.beat.beat_url.BeatUrlResponse
-import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRapResponse
-import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.beat.BeatResponse
+import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
+import com.example.rapgenerator.domain.model.chat.ChatGptRapResponse
+import com.example.rapgenerator.domain.model.chat.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.rapper.RapperResponse
 import com.example.rapgenerator.utils.Constants
 import retrofit2.Call
 import retrofit2.Response
@@ -27,4 +28,8 @@ interface ApiService {
     fun getBeatUrl(
         @Path("uuid") uuid: String
     ): Call<BeatUrlResponse>
+
+    @GET(Constants.END_POINT_RAPPER)
+    @Headers("Authorization: Basic ${Constants.API_KEY_BEAT}")
+    fun getRapper(): RapperResponse
 }

@@ -1,9 +1,10 @@
 package com.example.rapgenerator.domain.repository
 
-import com.example.rapgenerator.domain.model.chatgpt.beat.BeatResponse
-import com.example.rapgenerator.domain.model.chatgpt.beat.beat_url.BeatUrlResponse
-import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRapResponse
-import com.example.rapgenerator.domain.model.chatgpt.chat.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.beat.BeatResponse
+import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
+import com.example.rapgenerator.domain.model.chat.ChatGptRapResponse
+import com.example.rapgenerator.domain.model.chat.ChatGptRequestNew
+import com.example.rapgenerator.domain.model.rapper.RapperResponse
 import retrofit2.Call
 import retrofit2.Response
 
@@ -14,4 +15,6 @@ interface IPromptRepository {
     fun getBeat() : Call<BeatResponse>
 
     fun getBeatUrl(uuid: String) : Call<BeatUrlResponse>?
+
+    fun getRapper(): RapperResponse
 }
