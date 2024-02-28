@@ -52,4 +52,5 @@
     <string name="select_beats">Select Beat</string>
     <string name="rapper">Rapper</string>
     <string name="rapper_name">Lil\' Syntax</string>
+    <string name="please_wait">Please wait while we\nare generating your \nsong</string>
 </resources>

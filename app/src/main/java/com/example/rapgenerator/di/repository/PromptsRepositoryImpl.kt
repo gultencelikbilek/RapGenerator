@@ -6,6 +6,7 @@ import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
 import com.example.rapgenerator.domain.model.chat.ChatGptRapResponse
 import com.example.rapgenerator.domain.model.chat.ChatGptRequestNew
 import com.example.rapgenerator.domain.model.rapper.RapperResponse
+import com.example.rapgenerator.domain.model.rapper.rapper_url.RapperResponseUrlItem
 import com.example.rapgenerator.domain.repository.IPromptRepository
 import retrofit2.Call
 import retrofit2.Response
@@ -25,7 +26,19 @@ class PromptsRepositoryImpl @Inject constructor(private val apiService: ApiServi
         return apiService.getBeatUrl(uuid)
     }
 
-    override fun getRapper(): RapperResponse {
-        return apiService.getRapper()
+    override suspend fun getRapperFlow(): RapperResponse {
+        return apiService.getRapperFlow()
     }
+
+    override suspend fun getRapperUlr(id: String): RapperResponseUrlItem {
+        return apiService.getRapperUrl(id)
+    }
+
+    // override fun getRapper(): Call<RapperResponse> {
+  //     return apiService.getRapper()
+  // }
+
+  //  override suspend fun getRapperRes(): Response<RapperResponse> {
+  //     return apiService.getRapperRes()
+  //  }
 }

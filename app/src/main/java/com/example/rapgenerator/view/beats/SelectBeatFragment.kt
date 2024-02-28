@@ -9,11 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rapgenerator.R
 import com.example.rapgenerator.databinding.FragmentSelectBeatBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 
+@AndroidEntryPoint
 class SelectBeatFragment : Fragment(), SelectBeatAdapter.BeatItemClickedListener {
     private var _binding: FragmentSelectBeatBinding? = null
     private val binding get() = _binding!!
@@ -70,6 +73,9 @@ class SelectBeatFragment : Fragment(), SelectBeatAdapter.BeatItemClickedListener
                 Log.d("false", "burda")
                 playAudio(url!!)
             }
+        }
+        binding.btnContiune.setOnClickListener {
+            findNavController().navigate(R.id.action_selectBeatFragment_to_rapperFragment)
         }
     }
 

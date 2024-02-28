@@ -44,12 +44,26 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRapper"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_500sdp"
+        android:layout_height="@dimen/_450sdp"
         tools:listitem="@layout/rapper_adapter"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintRapper" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnContiune"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:background="@drawable/button_contiune_background_unselected"
+        android:text="@string/contiune"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -123,5 +123,14 @@
         android:id="@+id/selectBeatFragment"
         android:name="com.example.rapgenerator.view.beats.SelectBeatFragment"
         android:label="fragment_select_beat"
-        tools:layout="@layout/fragment_select_beat" />
+        tools:layout="@layout/fragment_select_beat" >
+        <action
+            android:id="@+id/action_selectBeatFragment_to_rapperFragment"
+            app:destination="@id/rapperFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rapperFragment"
+        android:name="com.example.rapgenerator.view.rapper.RapperFragment"
+        android:label="fragment_rapper"
+        tools:layout="@layout/fragment_rapper" />
 </navigation>
