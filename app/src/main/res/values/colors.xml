@@ -6,5 +6,5 @@
     <color name="onboarding_button_color2">#E54157</color>
     <color name="onboarding_button_color3">#DC2D96</color>
     <color name="add_button">#E8455B</color>
-    
+    <color name="seekbar_color">#E8455B</color>
 </resources>

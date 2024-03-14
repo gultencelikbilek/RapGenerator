@@ -15,4 +15,8 @@
     </style>
 
     <style name="Theme.RapGenerator" parent="Base.Theme.RapGenerator" />
+
+    <style name="MySeekBarStyle" parent="@android:style/Widget.SeekBar">
+        <item name="colorControlActivated">@color/black</item>
+    </style>
 </resources>
