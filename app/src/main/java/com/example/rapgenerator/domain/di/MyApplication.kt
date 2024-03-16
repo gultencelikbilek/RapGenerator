@@ -1,4 +1,4 @@
-package com.example.rapgenerator
+package com.example.rapgenerator.domain.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

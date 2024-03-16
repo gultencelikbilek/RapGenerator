@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.rapgenerator.databinding.FragmentGeneratingSongBinding
 import com.example.rapgenerator.domain.model.music.MusicRequest
 import com.example.rapgenerator.utils.SharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class GeneratingSongFragment : Fragment() {
     private var _binding: FragmentGeneratingSongBinding? = null
     private val binding get() = _binding!!
@@ -38,42 +43,48 @@ class GeneratingSongFragment : Fragment() {
     }
 
     private fun getDataShared() {
-        mainSharedViewModel.rapEditLyrics.observe(viewLifecycleOwner) { rap ->
-            val newRap = rap.trim()
-            val paragraph = newRap.split("\n\n")
-            rapSongLyrics = paragraph.map { it.split("\n") }
-            Log.d("select1", rapSongLyrics.toString())
+        lifecycleScope.launch {
+            mainSharedViewModel.rapEditLyrics.observe(viewLifecycleOwner) { rap ->
+                val newRap = rap.trim()
+                val paragraph = newRap.split("\n\n")
+                rapSongLyrics = paragraph.map { it.split("\n") }
+                Log.d("select1", rapSongLyrics.toString())
 
-           //mainSharedViewModel.voiceModelUuid.observe(viewLifecycleOwner) { rapperId ->
-           //    voice_model_uuid = rapperId
-           //    Log.d("select2", voice_model_uuid)
+                mainSharedViewModel.voiceModelUuid.observe(viewLifecycleOwner) { rapperId ->
+                    voice_model_uuid = rapperId
+                    Log.d("select2", voice_model_uuid)
 
 
-                mainSharedViewModel.backingTrack.observe(viewLifecycleOwner) { beatUrl ->
-                    backing_track = beatUrl
-                    Log.d("select3", backing_track)
+                    mainSharedViewModel.backingTrack.observe(viewLifecycleOwner) { beatUrl ->
+                        backing_track = beatUrl
+                        Log.d("select3", backing_track)
 
-                    val musicRequest = MusicRequest(backing_track,rapSongLyrics, voice_model_uuid)
-                   // generatingSongViewModel.postFreestyle(musicRequest)
-                    Log.d("musicrequest", musicRequest.toString())
-               // }
+                        val musicRequest = MusicRequest(backing_track, rapSongLyrics, voice_model_uuid)
+                        generatingSongViewModel.postFreestyle(musicRequest)
+                        Log.d("musicrequest", musicRequest.toString())
+                    }
+                }
             }
         }
-        mainSharedViewModel.rapperName.observe(viewLifecycleOwner) {
-            binding.tvRapperName.text = it
-        }
-        mainSharedViewModel.rapperImage.observe(viewLifecycleOwner){
-            binding.ivRapper.setImageResource(it)
-        }
-        generatingSongViewModel.postFreestyle.observe(viewLifecycleOwner) { music ->
-            Log.d("bursadda:", "burda")
-            if (generatingSongViewModel.postFreestyle.value!!.mix_url==null){
-                musicUrl = generatingSongViewModel.postFreestyle.value!!.mix_url.toString()
-                Log.d ("musicurl",musicUrl)
 
+            mainSharedViewModel.rapperName.observe(viewLifecycleOwner) {
+                binding.tvRapperName.text = it
+            }
+            mainSharedViewModel.rapperImage.observe(viewLifecycleOwner) {
+                binding.ivRapper.setImageResource(it)
+            }
+        lifecycleScope.launch {
+            generatingSongViewModel.postFreestyle.collect { response ->
+                response?.let { musicResponse ->
+                    musicResponse.mix_url?.let { mixUrl ->
+                        Log.d("MusicResponseFragment:", mixUrl)
+                        musicUrl = mixUrl
+                        Log.d("musicurl", musicUrl)
+                    }
+                }
             }
         }
-    }
+        }
 
     override fun onDestroyView() {
         super.onDestroyView()

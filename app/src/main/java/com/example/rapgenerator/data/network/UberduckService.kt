@@ -6,6 +6,8 @@ import com.example.rapgenerator.domain.model.music.MusicRequest
 import com.example.rapgenerator.domain.model.music.MusicResponse
 import com.example.rapgenerator.domain.model.rapper.RapperResponse
 import com.example.rapgenerator.domain.model.rapper.RapperResponseItem
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponse
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponseItem
 import com.example.rapgenerator.domain.model.rapper.rapper_url.RapperResponseUrlItem
 import com.example.rapgenerator.utils.Constants
 import retrofit2.Call
@@ -36,9 +38,9 @@ interface UberduckService {
     @Headers("Authorization: Basic ${Constants.API_KEY_BEAT}")
      fun getRapperUrl(
         @Path("voicemodel_uuid") uuid: String
-    ): Call<RapperResponseUrlItem>
+    ): Call<RapperUrlResponse>
 
-     @POST(Constants.END_POINT_MUSIC)
-     @Headers("Authorization: Basic ${Constants.API_KEY_BEAT}" )
-      fun postFreestyle(@Body musicRequest: MusicRequest) : Response<MusicResponse>
+     @POST("${Constants.END_POINT_MUSIC}")
+     @Headers("Authorization: Basic ${Constants.API_KEY_MUSIC}" )
+      fun postFreestyle(@Body musicRequest: MusicRequest) : Call<MusicResponse>
 }

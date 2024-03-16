@@ -1,6 +1,8 @@
 package com.example.rapgenerator.presentation.rapper
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -42,7 +44,6 @@ class RapperFragment : Fragment(), RapperAdapter.RapperItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //rapperViewModel.getRapper()
         setUpRv()
         getRapperData()
     }
@@ -65,25 +66,28 @@ class RapperFragment : Fragment(), RapperAdapter.RapperItemClickListener {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = rapperAdapter
             setHasFixedSize(true)
-
         }
     }
 
     override fun rapperItemClick(
         id: String, isPlaying: Boolean, rapperName: String, rapperImage: Int, voiceModelUuid: String
     ) {
+
         lifecycleScope.launch {
-            binding.btnContiune.setBackgroundResource(R.drawable.button_contiune_background_selected)
-            mainSharedViewModel.selectVoiceModelUuid(voiceModelUuid)
-            mainSharedViewModel.selectRapperName(rapperName)
-            mainSharedViewModel.selectRapperImage(rapperImage)
-            rapperViewModel.getRapperUrl(voiceModelUuid)
-            Log.d("RapperFragment", "UUID: $voiceModelUuid")
-            rapperViewModel.rapperUrl.collect() { rapperUrl ->
-                Log.d("RapperFragment:rapperUrl", "UUID: $rapperUrl")
-                rapperUrl?.let {
-                    Log.d("RapperFragment", "Rapper URL list: $it")
+            try {
+                binding.btnContiune.setBackgroundResource(R.drawable.button_contiune_background_selected)
+
+                mainSharedViewModel.selectVoiceModelUuid(voiceModelUuid)
+                mainSharedViewModel.selectRapperName(rapperName)
+                mainSharedViewModel.selectRapperImage(rapperImage)
+
+                 rapperViewModel.getRapperUrl(voiceModelUuid)
+
+                rapperViewModel.rapperUrl.collect(){
+                    Log.d("RapperFragment:rapperUrl", "UUID: $it")
                 }
+        }catch (e:Exception){
+                Log.d("RapperFragment:rapperUrl", "UUID: $e")
             }
         }
 

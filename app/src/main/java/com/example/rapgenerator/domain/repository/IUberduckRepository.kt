@@ -6,11 +6,10 @@ import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
 import com.example.rapgenerator.domain.model.music.MusicRequest
 import com.example.rapgenerator.domain.model.music.MusicResponse
 import com.example.rapgenerator.domain.model.rapper.RapperResponse
-import com.example.rapgenerator.domain.model.rapper.RapperResponseItem
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponse
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponseItem
 import com.example.rapgenerator.domain.model.rapper.rapper_url.RapperResponseUrlItem
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Call
-import retrofit2.Response
 
 interface IUberduckRepository {
     fun getBeat() : Flow<NetworkResponse<BeatResponse>>
@@ -19,7 +18,7 @@ interface IUberduckRepository {
 
      fun getRapper() :Flow<NetworkResponse<RapperResponse>>
 
-     fun getRapperUlr(id:String) :Flow<NetworkResponse<RapperResponseUrlItem>>
+     fun getRapperUrl(id:String) :Flow<NetworkResponse<RapperUrlResponse>>
 
-    suspend fun sendRapper(musicRequest : MusicRequest) : Response<MusicResponse>
+     fun postFreestyle(musicRequest : MusicRequest) : Flow<NetworkResponse<MusicResponse>>
 }

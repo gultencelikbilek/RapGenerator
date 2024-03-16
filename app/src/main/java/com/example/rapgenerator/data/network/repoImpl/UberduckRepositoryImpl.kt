@@ -8,18 +8,17 @@ import com.example.rapgenerator.domain.model.beat.beat_url.BeatUrlResponse
 import com.example.rapgenerator.domain.model.music.MusicRequest
 import com.example.rapgenerator.domain.model.music.MusicResponse
 import com.example.rapgenerator.domain.model.rapper.RapperResponse
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponse
+import com.example.rapgenerator.domain.model.rapper.RapperUrlResponseItem
 import com.example.rapgenerator.domain.model.rapper.rapper_url.RapperResponseUrlItem
 import com.example.rapgenerator.domain.repository.IUberduckRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class UberduckRepositoryImpl @Inject constructor(private val uberduckService: UberduckService) :
     IUberduckRepository {
@@ -124,34 +123,62 @@ class UberduckRepositoryImpl @Inject constructor(private val uberduckService: Ub
     }
 
 
-    override  fun getRapperUlr(id: String): Flow<NetworkResponse<RapperResponseUrlItem>> {
+    override  fun getRapperUrl(id: String): Flow<NetworkResponse<RapperUrlResponse>> {
         return callbackFlow {
             val responseRapperUrl = uberduckService.getRapperUrl(id)
             trySend(NetworkResponse.Loading)
-            responseRapperUrl.enqueue(object : Callback<RapperResponseUrlItem> {
+            responseRapperUrl.enqueue(object : Callback<RapperUrlResponse> {
                 override fun onResponse(
-                    call: Call<RapperResponseUrlItem>,
-                    response: Response<RapperResponseUrlItem>
+                    call: Call<RapperUrlResponse>,
+                    response: Response<RapperUrlResponse>
                 ) {
                     if (response.isSuccessful) {
                         val bodyRapperUrl = response.body()
                         bodyRapperUrl?.let {
                             trySend(NetworkResponse.Success(bodyRapperUrl))
+                            Log.d("RapperFragment:Success:", bodyRapperUrl.toString())
                         }
                     } else {
                         trySend(NetworkResponse.Error("onError"))
                     }
                 }
 
-                override fun onFailure(call: Call<RapperResponseUrlItem>, t: Throwable) {
-                    trySend(NetworkResponse.Error(t.message))
+
+
+                override fun onFailure(call: Call<RapperUrlResponse>, t: Throwable) {
+                        Log.e("RapperFragment", "Error occurred while fetching rapper URL: ${t.message}")
+                        trySend(NetworkResponse.Error(t.message))
                 }
             })
             awaitClose()
         }
     }
 
-    override suspend fun sendRapper(musicRequest: MusicRequest): Response<MusicResponse> {
-        return uberduckService.postFreestyle(musicRequest)
+    override fun postFreestyle(musicRequest: MusicRequest): Flow<NetworkResponse<MusicResponse>> {
+        return callbackFlow {
+            trySend(NetworkResponse.Loading) // Akışın başlangıcında Loading durumunu gönderin
+
+            val responseFreestyle = uberduckService.postFreestyle(musicRequest)
+            responseFreestyle.enqueue(object : Callback<MusicResponse> {
+                override fun onResponse(
+                    call: Call<MusicResponse>,
+                    response: Response<MusicResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let {
+                            Log.d("onResponse:UberduckRepo:", it.mix_url)
+                            trySend(NetworkResponse.Success(it))
+                        } ?: trySend(NetworkResponse.Error("onResponse:bodyFreestyle - Body is null"))
+                    } else {
+                        trySend(NetworkResponse.Error("Response unsuccessful: ${response.code()}"))
+                    }
+                }
+
+                override fun onFailure(call: Call<MusicResponse>, t: Throwable) {
+                    trySend(NetworkResponse.Error("onFailure: ${t.message}"))
+                }
+            })
+            awaitClose()
+        }
     }
 }

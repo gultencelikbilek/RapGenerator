@@ -6,5 +6,5 @@ data class RapperResponseItem(
     val is_private: Boolean,
     val language: String,
     val name: String,
-    val voicemodel_uuid: String
+    val voicemodel_uuid:String
 )
