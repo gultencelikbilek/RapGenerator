@@ -40,6 +40,7 @@ interface UberduckService {
         @Path("voicemodel_uuid") uuid: String
     ): Call<RapperUrlResponse>
 
+
      @POST("${Constants.END_POINT_MUSIC}")
      @Headers("Authorization: Basic ${Constants.API_KEY_MUSIC}" )
       fun postFreestyle(@Body musicRequest: MusicRequest) : Call<MusicResponse>
